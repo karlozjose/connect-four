@@ -2,9 +2,7 @@
 "Will use lists"
 
 from sys import exit
-
-GWIDTH = 7
-GHIGHT = 6 
+from setting import *
 
 class Game():
     def __init__(self):
