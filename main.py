@@ -1,4 +1,4 @@
-""" Creating a simple connect 4 """
+""" Creating a simple connect 4 for the command line """
 "Will use lists"
 
 from sys import exit
@@ -59,11 +59,13 @@ while not game.over:
 
     # check if lowest row has an item or anythin in it. 
     for i in range(GHIGHT+1):
-        if game.list[i][col] != ' ':
-            i += 1
-        elif game.list[i][col] == ' ':
-            game.list[i][col] = piece
-            break
+        if game.list[GHIGHT][col] == ' ':
+            if game.list[i][col] != ' ':
+                i += 1
+            elif game.list[i][col] == ' ':
+                game.list[i][col] = piece
+                turn += 1
+                break
 
     # check for winning game
     # use j and k 
@@ -75,17 +77,21 @@ while not game.over:
                         game.print_board()
                         game.player_won(player)
                        
-                if 0 <= k < GHIGHT-3:
+                if 0 <= k <= GHIGHT-3:
                     if game.list[k][j] == game.list[k+1][j] == game.list[k+2][j] == game.list[k+3][j]:
                         game.print_board()
                         game.player_won(player)
 
-                if (0 <= j < GWIDTH-3) & (0 <= k < GHIGHT-3):
+                if (0 <= j < GWIDTH-3) & (0 <= k <= GHIGHT-3):
                     if game.list[k][j] == game.list[k+1][j+1] == game.list[k+2][j+2] == game.list[k+3][j+3]:
                         game.print_board()
                         game.player_won(player)
 
-                    if game.list[k][j] == game.list[k+1][j-1] == game.list[k+2][j-2] == game.list[k+3][j-3]:
+                if (3 <= j < GWIDTH) & (0 <= k <= GHIGHT-3):
+                    if game.list[k][j] == game.list[k+1][j-1] == game.list[k+2][j-2] == game.list[k+3][j-3]:  
                         game.print_board()
                         game.player_won(player)
-    turn += 1
+
+    if ' ' not in game.list[6]:
+        print('It\'s a tie!')
+        exit()
