@@ -7,9 +7,13 @@ To play the game with PyGame graphics, run:
 
 `python gamepy.py`
 
-To play with console commands then run:
+![pygame](./images/pygame.PNG)
+
+To play on the console,  run:
 
 `python main.py`
+
+![console game](./images/console.PNG)
 
 ---
 
